@@ -116,7 +116,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative w-full py-20 lg:py-32 flex items-center justify-center text-white">
         <Image
-          src="/images/hero-background.png"
+          src="/images/HomePage/HomePage.png"
           alt="Copper background"
           fill
           className="object-cover"
@@ -143,7 +143,7 @@ export default function Home() {
       </section>
       
       {/* Timeless Craftsmanship Section */}
-      <section ref={sectionRef} id="craftsmanship" className="relative bg-background h-[300vh]">
+      <section ref={sectionRef} id="craftsmanship" className="relative bg-background py-16 lg:py-24 h-[300vh]">
         <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
