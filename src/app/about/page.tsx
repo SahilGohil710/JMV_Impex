@@ -1,5 +1,5 @@
 
-import { Award, Target, Leaf, Gem, Hammer, Sparkles } from 'lucide-react';
+import { Gem, Hammer, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
@@ -31,54 +31,7 @@ export default function AboutPage() {
             </p>
         </div>
 
-        <section id="about" className="py-16 md:py-24 bg-secondary/50 rounded-lg">
-            <div className="container mx-auto px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">
-                    Timeless Craftsmanship
-                </h2>
-                <p className="mt-4 text-muted-foreground">
-                    At JMV Impex, we are dedicated to preserving the ancient art of copper crafting. Our artisans blend traditional techniques with contemporary designs to create pieces that are not only beautiful but also functional and durable.
-                </p>
-                <div className="mt-8 space-y-6">
-                    <div className="flex gap-4">
-                    <Award className="h-8 w-8 text-primary mt-1" />
-                    <div>
-                        <h3 className="font-semibold text-foreground">Quality Materials</h3>
-                        <p className="text-muted-foreground">We use only the highest-grade pure copper to ensure longevity and safety.</p>
-                    </div>
-                    </div>
-                    <div className="flex gap-4">
-                    <Target className="h-8 w-8 text-primary mt-1" />
-                    <div>
-                        <h3 className="font-semibold text-foreground">Artisanal Skill</h3>
-                        <p className="text-muted-foreground">Every item is meticulously handcrafted by skilled artisans with generations of experience.</p>
-                    </div>
-                    </div>
-                    <div className="flex gap-4">
-                    <Leaf className="h-8 w-8 text-primary mt-1" />
-                    <div>
-                        <h3 className="font-semibold text-foreground">Sustainable Practices</h3>
-                        <p className="text-muted-foreground">We are committed to ethical sourcing and environmentally friendly production methods.</p>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div className="relative h-80 md:h-full min-h-[400px] rounded-lg overflow-hidden shadow-xl">
-                <Image
-                    src="https://placehold.co/600x800.png"
-                    alt="Craftsman working on copper"
-                    fill
-                    className="object-cover"
-                    data-ai-hint="copper workshop"
-                />
-                </div>
-            </div>
-            </div>
-        </section>
-        
-        <section id="process" className="py-16 md:py-24">
+        <section id="process" className="py-16 md:py-24 bg-secondary/50 rounded-lg">
             <div className="container mx-auto px-4 md:px-6">
             <div className="text-center mb-12">
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">
