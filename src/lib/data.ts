@@ -22,16 +22,16 @@ export const products: Product[] = [
     name: 'Straight Copper Pipe',
     category: 'Pipes',
     description:
-      'Durable and reliable straight copper pipes for plumbing, HVAC, and medical gas systems. Manufactured to strict quality standards for consistent wall thickness and temper.',
+      'High-quality DHP-Cu straight copper pipes, suitable for a variety of applications including plumbing, HVAC, and industrial use. Manufactured to meet rigorous international standards, ensuring reliability and performance.',
     details: [
-      'Meets ASTM B88 standards',
-      'Hard-drawn temper for rigidity',
-      'Resistant to corrosion and scaling',
-      'Suitable for both residential and commercial use',
+      'Chemical Composition: Min. 99.9% Cu, P = 0.015 - 0.040%',
+      'Standards: ASTM B280, B68, B88, B743, GOST 617-2006, EN 12735-1, 12735-2',
+      'Hard-drawn temper for rigidity and strength',
+      'Available in various diameters',
     ],
     image: 'https://placehold.co/600x400.png',
-    material: 'Pure Copper',
-    dimensions: 'Standard lengths and diameters available',
+    material: 'DHP-Cu (deoxidized, high phosphorus copper)',
+    dimensions: '3.0-6.0m (9.84-19.68 ft) lengths',
   },
   {
     id: '3',
