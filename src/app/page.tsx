@@ -2,17 +2,21 @@ import { products } from '@/lib/data';
 import { ProductCatalog } from '@/components/product-catalog';
 import { Award, Target, Leaf } from 'lucide-react';
 import Image from 'next/image';
+import { TypingEffect } from '@/components/typing-effect';
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <section className="relative w-full py-20 md:py-32 lg:py-40 bg-secondary/50">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-            The Art of Copper
-          </h1>
+          <div className="min-h-[40px] md:min-h-[48px] lg:min-h-[60px] flex items-center justify-center">
+            <TypingEffect
+              text="JMV Impex"
+              className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground"
+            />
+          </div>
           <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground">
-            Experience the warmth and beauty of handcrafted copperware from JMV Impex. Each piece tells a story of tradition and quality.
+            The Art of Copper. Experience the warmth and beauty of handcrafted copperware. Each piece tells a story of tradition and quality.
           </p>
         </div>
       </section>
