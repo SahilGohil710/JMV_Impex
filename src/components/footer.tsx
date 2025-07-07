@@ -13,24 +13,28 @@ export function Footer() {
               <span className="font-headline text-2xl font-bold">JMV Impex</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Discover the timeless elegance of handcrafted copperware by JMV Impex.
+              Manufacturer & Stockist of Copper Fittings, Copper Pipe Tubes, Copper-Nickel Fittings.
             </p>
           </div>
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
               <h4 className="font-headline font-semibold mb-2">Contact Us</h4>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2">
-                  <Mail className="h-4 w-4 text-accent" />
-                  <a href="mailto:inquiries@jmvimpex.com" className="hover:text-primary">inquiries@jmvimpex.com</a>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-3">
+                  <Mail className="h-4 w-4 text-accent mt-1 flex-shrink-0" />
+                  <a href="mailto:jmvimpexsales@gmail.com" className="hover:text-primary break-all">jmvimpexsales@gmail.com</a>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-accent" />
-                  <a href="tel:+1234567890" className="hover:text-primary">+1 (234) 567-890</a>
+                <li className="flex items-start gap-3">
+                  <Phone className="h-4 w-4 text-accent mt-1 flex-shrink-0" />
+                  <div>
+                    <a href="tel:+919869561920" className="hover:text-primary">+91 98695 61920</a>
+                    <span className="mx-1">/</span>
+                    <a href="tel:+918779642352" className="hover:text-primary">87796 42352</a>
+                  </div>
                 </li>
-                <li className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-accent" />
-                  <span>123 Copper Lane, Artisan City</span>
+                <li className="flex items-start gap-3">
+                  <MapPin className="h-4 w-4 text-accent mt-1 flex-shrink-0" />
+                  <span>Shop No. 17, Gr. Floor, Old Hira Building, Vitthalbhai Patel Road, Parsiwada 1st Lane, C. P. Tank, Mumbai - 400004.</span>
                 </li>
               </ul>
             </div>
@@ -44,7 +48,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t pt-4 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} JMV Impex. All rights reserved.
+          © {new Date().getFullYear()} JMV Impex. All rights reserved. | GST: 27AAUFJ1223C1ZK
         </div>
       </div>
     </footer>
