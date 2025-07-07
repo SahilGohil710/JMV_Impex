@@ -18,6 +18,7 @@ import {
   Shapes,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function Home() {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
@@ -46,6 +47,8 @@ export default function Home() {
       hint: 'eco friendly copper',
     },
   ];
+
+  const craftsmanshipIntro = 'At JMV Impex, we are dedicated to preserving the ancient art of copper crafting. Our artisans blend traditional techniques with contemporary designs to create pieces that are not only beautiful but also functional and durable.';
   
   const advantages = [
     {
@@ -87,6 +90,11 @@ export default function Home() {
 
 
   useEffect(() => {
+    // The scroll effect is only for desktop screens (md breakpoint and up).
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     const handleScroll = () => {
       const section = sectionRef.current;
       if (!section) return;
@@ -142,9 +150,9 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Timeless Craftsmanship Section */}
-      <section ref={sectionRef} id="craftsmanship" className="relative bg-background py-16 lg:py-24 h-[300vh]">
-        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+      {/* Timeless Craftsmanship Section - DESKTOP */}
+      <section ref={sectionRef} id="craftsmanship" className="hidden md:block relative bg-background h-[300vh]">
+        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden py-16 lg:py-24">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div>
@@ -152,7 +160,7 @@ export default function Home() {
                             Timeless Craftsmanship
                         </h2>
                         <p className="mt-4 text-muted-foreground">
-                            At JMV Impex, we are dedicated to preserving the ancient art of copper crafting. Our artisans blend traditional techniques with contemporary designs to create pieces that are not only beautiful but also functional and durable.
+                           {craftsmanshipIntro}
                         </p>
                         <div className="mt-8 space-y-8">
                             {content.map((item, index) => {
@@ -188,6 +196,47 @@ export default function Home() {
             </div>
         </div>
       </section>
+      
+      {/* Timeless Craftsmanship Section - MOBILE */}
+      <section id="craftsmanship-mobile" className="block md:hidden bg-background py-16">
+        <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+                <h2 className="font-headline text-3xl font-bold text-foreground">
+                    Timeless Craftsmanship
+                </h2>
+                <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+                    {craftsmanshipIntro}
+                </p>
+            </div>
+            <div className="space-y-12">
+                {content.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                        <Card key={index} className="overflow-hidden shadow-lg">
+                            <CardContent className="p-0">
+                                <div className="relative aspect-video w-full">
+                                    <Image
+                                        src={item.image}
+                                        alt={item.title}
+                                        fill
+                                        className="object-cover"
+                                        data-ai-hint={item.hint}
+                                    />
+                                </div>
+                                <div className="p-6">
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <Icon className="h-8 w-8 text-primary shrink-0" />
+                                        <h3 className="font-semibold text-foreground text-xl">{item.title}</h3>
+                                    </div>
+                                    <p className="text-muted-foreground">{item.description}</p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    )
+                })}
+            </div>
+        </div>
+    </section>
       
       {/* Advantage Section */}
        <section id="advantages" className="py-16 lg:py-24 bg-secondary/50">
@@ -227,4 +276,5 @@ export default function Home() {
 
     </div>
   );
-}
+
+    
