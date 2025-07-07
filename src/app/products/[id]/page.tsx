@@ -74,18 +74,6 @@ export default function ProductPage({ params }: { params: { id:string } }) {
               </Card>
             ))}
           </div>
-          
-          <div className="max-w-3xl mx-auto">
-            <Card className="bg-secondary/50 mt-16">
-                <CardHeader>
-                    <CardTitle className="font-headline text-2xl text-center">Inquire About Our Fittings</CardTitle>
-                </CardHeader>
-              <CardContent>
-                  <p className="text-center text-muted-foreground mb-6">Have a question about our range of copper fittings, custom orders, or bulk pricing? Get in touch!</p>
-                  <ProductInquiryForm productName={product.name} />
-              </CardContent>
-            </Card>
-          </div>
 
         </div>
       </div>
