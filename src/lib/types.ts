@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'Kitchenware' | 'Decor' | 'Jewelry' | 'Utensils';
+  category: 'Coils' | 'Pipes' | 'Fittings';
   price: number;
   description: string;
   details: string[];
