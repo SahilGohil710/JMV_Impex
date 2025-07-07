@@ -1,8 +1,16 @@
+"use client";
 
 import { UtensilsCrossed, Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export function Footer() {
+  const [year, setYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer id="contact" className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 py-8 md:px-6">
@@ -13,7 +21,7 @@ export function Footer() {
               <span className="font-headline text-2xl font-bold">JMV Impex</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Manufacturer & Stockist of Copper Fittings, Copper Pipe Tubes, Copper-Nickel Fittings.
+              Manufacturer and Stockist of Copper Fittings, Copper Pipe Tubes, Copper-Nickel Fittings.
             </p>
           </div>
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -48,7 +56,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t pt-4 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} JMV Impex. All rights reserved. | GST: 27AAUFJ1223C1ZK
+          © {year} JMV Impex. All rights reserved. | GST: 27AAUFJ1223C1ZK
         </div>
       </div>
     </footer>
