@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -27,21 +28,21 @@ export default function Home() {
       icon: Award,
       title: 'Quality Materials',
       description: 'We use only the highest-grade pure copper to ensure longevity and safety.',
-      image: '/images/quality-materials.png',
+      image: '/images/Timeless_Craftsmanship/Quality_Materials.png',
       hint: 'copper raw material',
     },
     {
       icon: Target,
       title: 'Artisanal Skill',
       description: 'Every item is meticulously handcrafted by skilled artisans with generations of experience.',
-      image: '/images/artisanal-skill.png',
+      image: '/images/Timeless_Craftsmanship/Artisanal_Skill.png',
       hint: 'craftsman working',
     },
     {
       icon: Leaf,
       title: 'Sustainable Practices',
       description: 'We are committed to ethical sourcing and environmentally friendly production methods.',
-      image: '/images/sustainable-practices.png',
+      image: '/images/Timeless_Craftsmanship/Sustainable_Practices.png',
       hint: 'eco friendly copper',
     },
   ];
@@ -113,14 +114,22 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="w-full py-20 lg:py-32 flex items-center justify-center bg-secondary/50">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+      <section className="relative w-full py-20 lg:py-32 flex items-center justify-center text-white">
+        <Image
+          src="/images/hero-background.png"
+          alt="Copper background"
+          fill
+          className="object-cover"
+          data-ai-hint="copper texture"
+        />
+        <div className="absolute inset-0 bg-black/60" /> {/* Overlay for readability */}
+        <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
           <div className="flex items-center justify-center">
-            <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+            <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               JMV Impex
             </h1>
           </div>
-          <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground">
+          <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-slate-200">
             The Art of Copper. Experience the warmth and beauty of handcrafted copperware. Each piece tells a story of tradition and quality.
           </p>
            <div className="mt-8">
