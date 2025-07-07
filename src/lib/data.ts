@@ -37,7 +37,7 @@ export const products: Product[] = [
     id: '3',
     name: 'Copper Fittings',
     category: 'Fittings',
-    description: 'A comprehensive collection of high-quality copper fittings to meet all your plumbing and HVAC needs. Our range includes various elbows, couplings, tees, and connection tubes, all engineered for durability and a perfect fit.',
+    description: 'A comprehensive collection of high-quality copper fittings to meet all your plumbing and HVAC needs. Our range includes various elbows, couplings, tees, and connection tubes, all engineered for durability and a perfect fit. Our fittings are manufactured to the highest standards, ensuring leak-proof connections and long-lasting performance in any application.',
     details: [
       '45° Elbow',
       '90° Elbow',
