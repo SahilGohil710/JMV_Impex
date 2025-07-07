@@ -5,24 +5,22 @@ export const products: Product[] = [
     id: '1',
     name: 'Pancake Coil',
     category: 'Coils',
-    price: 150.0,
     description:
-      'High-quality pancake coils made from pure copper, ideal for refrigeration, air conditioning, and heat exchange applications. Our coils are precision-wound for optimal performance and durability.',
+      'High-quality DHP-Cu (deoxidized, high phosphorus copper) pancake coils, ideal for refrigeration, air conditioning, and heat exchange applications. Conforms to multiple international standards.',
     details: [
-      'Made from 99.9% pure copper',
-      'Seamless construction for leak-free performance',
-      'Available in various diameters and lengths',
+      'Chemical Composition: Min. 99.9% Cu, P = 0.015 - 0.040%',
+      'Available Length: 15-50m (49.21-164.04 ft)',
+      'Standards: ASTM B280, B68, B88, B743, GOST 617-2006, EN 12735-1, 12735-2',
       'Soft-annealed for easy bending and flaring',
     ],
     image: 'https://placehold.co/600x400.png',
-    material: 'Pure Copper',
+    material: 'DHP-Cu (deoxidized, high phosphorus copper)',
     dimensions: 'Customizable',
   },
   {
     id: '2',
     name: 'Straight Copper Pipe',
     category: 'Pipes',
-    price: 80.0,
     description:
       'Durable and reliable straight copper pipes for plumbing, HVAC, and medical gas systems. Manufactured to strict quality standards for consistent wall thickness and temper.',
     details: [
@@ -39,7 +37,6 @@ export const products: Product[] = [
     id: '3',
     name: 'Copper Fittings',
     category: 'Fittings',
-    price: 25.0,
     description:
       'A wide range of precision-engineered copper fittings, including elbows, tees, and couplings. Designed for secure, long-lasting connections in any copper tubing system.',
     details: [

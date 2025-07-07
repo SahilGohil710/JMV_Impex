@@ -34,14 +34,8 @@ export function ProductCatalog({ products }: ProductCatalogProps) {
     const [sortKey, sortDirection] = sortBy.split('-');
     
     filtered.sort((a, b) => {
-      let valA, valB;
-      if (sortKey === 'price') {
-        valA = a.price;
-        valB = b.price;
-      } else { // name
-        valA = a.name.toLowerCase();
-        valB = b.name.toLowerCase();
-      }
+      let valA = a.name.toLowerCase();
+      let valB = b.name.toLowerCase();
 
       if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
       if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
@@ -78,8 +72,6 @@ export function ProductCatalog({ products }: ProductCatalogProps) {
             <SelectContent>
               <SelectItem value="name-asc">Name (A-Z)</SelectItem>
               <SelectItem value="name-desc">Name (Z-A)</SelectItem>
-              <SelectItem value="price-asc">Price (Low-High)</SelectItem>
-              <SelectItem value="price-desc">Price (High-Low)</SelectItem>
             </SelectContent>
           </Select>
         </div>

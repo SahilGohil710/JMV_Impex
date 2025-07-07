@@ -58,7 +58,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <div className="flex flex-col">
             <Badge variant="secondary" className="mb-2 bg-accent/20 text-accent-foreground self-start">{product.category}</Badge>
             <h1 className="font-headline text-3xl md:text-4xl font-bold">{product.name}</h1>
-            <p className="text-3xl font-semibold text-primary mt-2">${product.price.toFixed(2)}</p>
             <p className="mt-4 text-lg text-muted-foreground">{product.description}</p>
             
             <Separator className="my-6" />

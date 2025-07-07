@@ -36,8 +36,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <CardContent className="p-0 flex-grow">
           <p className="text-muted-foreground text-sm mt-2 line-clamp-3">{product.description}</p>
         </CardContent>
-        <CardFooter className="p-0 pt-4 flex justify-between items-center mt-auto">
-          <p className="text-xl font-semibold text-primary">${product.price.toFixed(2)}</p>
+        <CardFooter className="p-0 pt-4 flex justify-end items-center mt-auto">
           <Button asChild size="sm">
             <Link href={`/products/${product.id}`}>
               View Details <ArrowRight className="ml-2 h-4 w-4" />
