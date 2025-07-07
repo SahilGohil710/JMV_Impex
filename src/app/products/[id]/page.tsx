@@ -54,20 +54,20 @@ export default function ProductPage({ params }: { params: { id:string } }) {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {product.details.map((fittingName, index) => (
+            {product.details.map((fitting, index) => (
               <Card key={index} className="group overflow-hidden text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <CardContent className="p-0">
                   <div className="relative aspect-square w-full bg-secondary/30">
                     <Image
-                      src={`https://placehold.co/400x400.png`}
-                      alt={fittingName}
+                      src={fitting.image}
+                      alt={fitting.name}
                       fill
                       className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                       data-ai-hint="copper fitting"
                     />
                   </div>
                   <div className="p-4 border-t">
-                    <h3 className="font-semibold">{fittingName}</h3>
+                    <h3 className="font-semibold">{fitting.name}</h3>
                   </div>
                 </CardContent>
               </Card>
@@ -120,7 +120,7 @@ export default function ProductPage({ params }: { params: { id:string } }) {
 
             <h3 className="font-semibold text-xl mb-4">Features</h3>
             <ul className="space-y-3 mb-6">
-              {product.details.map((detail, index) => (
+              {(product.details as string[]).map((detail, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-accent mt-0.5 shrink-0" />
                   <span className="text-foreground">{detail}</span>

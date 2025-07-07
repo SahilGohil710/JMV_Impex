@@ -4,7 +4,18 @@ import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Award, Target, Leaf } from 'lucide-react';
+import {
+  ArrowRight,
+  Award,
+  Target,
+  Leaf,
+  Factory,
+  ShieldCheck,
+  Building2,
+  TrendingUp,
+  Globe2,
+  Shapes,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
@@ -16,24 +27,63 @@ export default function Home() {
       icon: Award,
       title: 'Quality Materials',
       description: 'We use only the highest-grade pure copper to ensure longevity and safety.',
-      image: 'https://placehold.co/600x800.png',
-      hint: 'copper raw material'
+      image: '/images/quality-materials.png',
+      hint: 'copper raw material',
     },
     {
       icon: Target,
       title: 'Artisanal Skill',
       description: 'Every item is meticulously handcrafted by skilled artisans with generations of experience.',
-      image: 'https://placehold.co/600x800.png',
-      hint: 'craftsman working'
+      image: '/images/artisanal-skill.png',
+      hint: 'craftsman working',
     },
     {
       icon: Leaf,
       title: 'Sustainable Practices',
       description: 'We are committed to ethical sourcing and environmentally friendly production methods.',
-      image: 'https://placehold.co/600x800.png',
-      hint: 'eco friendly copper'
+      image: '/images/sustainable-practices.png',
+      hint: 'eco friendly copper',
     },
   ];
+  
+  const advantages = [
+    {
+      icon: Factory,
+      title: 'Manufacturing Capacity',
+      description: 'Capable of producing 35 to 40 tons annually, showcasing our robust manufacturing capabilities.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Environmental Compliance',
+      description: 'Our operations adhere to eco-friendly practices and are compliant with ROHS and ISO standards, ensuring sustainability.',
+    },
+    {
+      icon: Building2,
+      title: 'Largest Manufacturing Unit',
+      description: 'Proudly boasting the largest manufacturing unit for copper fittings, catering to ACR, Medical Gas, and Plumbing industries.',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Growth Trajectory',
+      description: 'From 4 tons annually in 2006 to 480 tons today, our growth reflects our commitment to expansion and advancement.',
+    },
+    {
+      icon: Globe2,
+      title: 'Global Reach',
+      description: 'Exporting to over 11 countries, we are a trusted partner in the international market.',
+    },
+    {
+      icon: Award,
+      title: 'Quality and Reliability',
+      description: 'Renowned for our superior quality and unwavering dependability, we have earned a stellar reputation in the industry.',
+    },
+    {
+      icon: Shapes,
+      title: 'Extensive Product Range',
+      description: 'Currently manufacturing over 100 products of varying sizes and thicknesses to meet diverse industry needs.',
+    },
+  ];
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,15 +91,12 @@ export default function Home() {
       if (!section) return;
 
       const { top, height } = section.getBoundingClientRect();
-      // Calculate the portion of the section that can be scrolled through
       const scrollableHeight = height - window.innerHeight;
       
-      // Don't run if the section is not in the active scroll area
       if (top > 0 || top < -scrollableHeight) {
         return;
       }
 
-      // Calculate scroll progress within the section (0 to 1)
       const progress = Math.abs(top) / scrollableHeight;
       const newIndex = Math.min(content.length - 1, Math.floor(progress * content.length));
 
@@ -132,6 +179,43 @@ export default function Home() {
             </div>
         </div>
       </section>
+      
+      {/* Advantage Section */}
+       <section id="advantages" className="py-16 lg:py-24 bg-secondary/50">
+        <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-12">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">
+                The JMV Impex Advantage
+            </h2>
+            <p className="mt-2 max-w-3xl mx-auto text-muted-foreground">
+                Discover the key benefits of partnering with us for your copper needs.
+            </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+            {advantages.map((advantage, index) => (
+                <div key={index} className="[perspective:1000px] group h-64">
+                <div className="relative h-full w-full rounded-lg shadow-xl [transform-style:preserve-3d] transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
+                    {/* Front of card */}
+                    <div className="absolute inset-0 [backface-visibility:hidden]">
+                        <div className="h-full w-full bg-card rounded-lg p-6 flex flex-col items-center justify-center text-center border">
+                            <advantage.icon className="h-12 w-12 text-primary mb-4" />
+                            <h3 className="font-headline text-xl font-semibold text-foreground">{advantage.title}</h3>
+                        </div>
+                    </div>
+                    {/* Back of card */}
+                    <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                        <div className="h-full w-full bg-card rounded-lg p-6 flex flex-col justify-center text-center border">
+                            <h3 className="font-headline text-lg font-semibold text-foreground mb-2">{advantage.title}</h3>
+                            <p className="text-muted-foreground text-sm">{advantage.description}</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            ))}
+            </div>
+        </div>
+      </section>
+
     </div>
   );
 }

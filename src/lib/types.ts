@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   category: 'Coils' | 'Pipes' | 'Fittings';
   description: string;
-  details: string[];
+  details: string[] | { name: string; image: string }[];
   image: string;
   material: string;
   dimensions: string;
