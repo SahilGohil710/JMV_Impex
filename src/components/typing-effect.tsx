@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -7,9 +8,10 @@ interface TypingEffectProps {
   text: string;
   className?: string;
   speed?: number;
+  onComplete?: () => void;
 }
 
-export function TypingEffect({ text, className, speed = 150 }: TypingEffectProps) {
+export function TypingEffect({ text, className, speed = 150, onComplete }: TypingEffectProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
 
@@ -17,7 +19,10 @@ export function TypingEffect({ text, className, speed = 150 }: TypingEffectProps
     setIsTyping(true);
     setDisplayedText('');
     
-    if (!text) return;
+    if (!text) {
+        setIsTyping(false);
+        return;
+    };
 
     let i = 0;
     const intervalId = setInterval(() => {
@@ -31,6 +36,13 @@ export function TypingEffect({ text, className, speed = 150 }: TypingEffectProps
 
     return () => clearInterval(intervalId);
   }, [text, speed]);
+
+  useEffect(() => {
+    if (!isTyping && onComplete) {
+      onComplete();
+    }
+  }, [isTyping, onComplete]);
+
 
   return (
     <h1 className={cn(className)}>
