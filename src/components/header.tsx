@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, UtensilsCrossed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 
 export function Header() {
@@ -63,29 +63,32 @@ export function Header() {
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="right">
-                        <div className="p-6 pt-12">
-                            <SheetClose asChild>
-                                <Link href="/" className="flex items-center gap-2 mb-8">
-                                    <UtensilsCrossed className="h-6 w-6 text-primary" />
-                                    <span className="font-headline text-xl font-bold text-foreground">JMV Impex</span>
-                                </Link>
-                            </SheetClose>
-                            <nav className="flex flex-col gap-4">
-                            {navLinks.map((link) => (
-                                <SheetClose asChild key={link.href}>
-                                    <Link
-                                        href={link.href}
-                                        className={cn(
-                                        'text-lg font-medium transition-colors hover:text-primary',
-                                        pathname === link.href ? 'text-primary' : 'text-muted-foreground'
-                                        )}
-                                    >
-                                        {link.label}
+                            <SheetHeader className="sr-only">
+                                <SheetTitle>Menu</SheetTitle>
+                            </SheetHeader>
+                            <div className="p-6 pt-12">
+                                <SheetClose asChild>
+                                    <Link href="/" className="flex items-center gap-2 mb-8">
+                                        <UtensilsCrossed className="h-6 w-6 text-primary" />
+                                        <span className="font-headline text-xl font-bold text-foreground">JMV Impex</span>
                                     </Link>
                                 </SheetClose>
-                            ))}
-                            </nav>
-                        </div>
+                                <nav className="flex flex-col gap-4">
+                                {navLinks.map((link) => (
+                                    <SheetClose asChild key={link.href}>
+                                        <Link
+                                            href={link.href}
+                                            className={cn(
+                                            'text-lg font-medium transition-colors hover:text-primary',
+                                            pathname === link.href ? 'text-primary' : 'text-muted-foreground'
+                                            )}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </SheetClose>
+                                ))}
+                                </nav>
+                            </div>
                         </SheetContent>
                     </Sheet>
                 </div>
