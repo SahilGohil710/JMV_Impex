@@ -1,3 +1,4 @@
+
 import { products } from '@/lib/data';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -35,7 +36,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/#catalog">Catalog</Link>
+                <Link href="/products">Products</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />

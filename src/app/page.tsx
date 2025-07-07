@@ -1,7 +1,7 @@
 
 import { products } from '@/lib/data';
 import { ProductCatalog } from '@/components/product-catalog';
-import { Award, Target, Leaf } from 'lucide-react';
+import { Award, Target, Leaf, Gem, Hammer, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -67,17 +67,39 @@ export default function Home() {
         </div>
       </section>
       
-      <section id="catalog" className="py-16 md:py-24 bg-secondary/50">
+      <section id="process" className="py-16 md:py-24 bg-secondary/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">
-              Our Collection
+              The Journey of Our Copper
             </h2>
             <p className="mt-2 max-w-2xl mx-auto text-muted-foreground">
-              Browse our curated selection of fine copper products.
+              From raw material to a work of art, each piece undergoes a meticulous process.
             </p>
           </div>
-          <ProductCatalog products={products} />
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="flex flex-col items-center gap-4 p-6 rounded-lg">
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                <Gem className="h-8 w-8" />
+              </div>
+              <h3 className="font-headline text-xl font-semibold">1. Design & Sourcing</h3>
+              <p className="text-muted-foreground">We begin by sourcing the purest copper and creating timeless designs that blend tradition with modern aesthetics.</p>
+            </div>
+            <div className="flex flex-col items-center gap-4 p-6 rounded-lg">
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                <Hammer className="h-8 w-8" />
+              </div>
+              <h3 className="font-headline text-xl font-semibold">2. Artisan Forging</h3>
+              <p className="text-muted-foreground">Our master artisans skillfully hammer, shape, and forge the copper by hand, breathing life and unique character into every curve.</p>
+            </div>
+            <div className="flex flex-col items-center gap-4 p-6 rounded-lg">
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
+                <Sparkles className="h-8 w-8" />
+              </div>
+              <h3 className="font-headline text-xl font-semibold">3. Finishing & Patina</h3>
+              <p className="text-muted-foreground">The final piece is polished to a brilliant shine or treated to develop a beautiful, natural patina, ensuring a one-of-a-kind finish.</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

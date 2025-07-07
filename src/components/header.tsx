@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { UtensilsCrossed } from 'lucide-react';
 
@@ -10,8 +11,8 @@ export function Header() {
           <span className="font-headline text-xl font-bold text-foreground">JMV Impex</span>
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium">
-          <Link href="/#catalog" className="text-muted-foreground transition-colors hover:text-foreground">
-            Catalog
+          <Link href="/products" className="text-muted-foreground transition-colors hover:text-foreground">
+            Products
           </Link>
           <Link href="/#contact" className="text-muted-foreground transition-colors hover:text-foreground">
             Contact

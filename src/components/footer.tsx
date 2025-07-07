@@ -1,3 +1,4 @@
+
 import { UtensilsCrossed, Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
 
@@ -36,7 +37,7 @@ export function Footer() {
             <div>
               <h4 className="font-headline font-semibold mb-2">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/#catalog" className="hover:text-primary">Catalog</Link></li>
+                <li><Link href="/products" className="hover:text-primary">Products</Link></li>
                 <li><Link href="/#about" className="hover:text-primary">About Us</Link></li>
               </ul>
             </div>
