@@ -2,11 +2,10 @@
 import { products } from '@/lib/data';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Package, Ruler } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { ProductInquiryForm } from '@/components/product-inquiry-form';
 import Link from 'next/link';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
@@ -138,15 +137,6 @@ export default function ProductPage({ params }: { params: { id:string } }) {
                     <span><strong>Dimensions:</strong> {product.dimensions}</span>
                 </div>
              </div>
-
-            <Card className="bg-secondary/50 mt-auto">
-                <CardHeader>
-                    <CardTitle className="font-headline text-xl">Have a question?</CardTitle>
-                </CardHeader>
-              <CardContent>
-                  <ProductInquiryForm productName={product.name} />
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
