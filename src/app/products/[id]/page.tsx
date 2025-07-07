@@ -16,11 +16,80 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default function ProductPage({ params }: { params: { id:string } }) {
   const product = products.find((p) => p.id === params.id);
 
   if (!product) {
     notFound();
+  }
+
+  // Special layout for Copper Fittings
+  if (product.id === '3') {
+    return (
+      <div className="bg-background">
+        <div className="container mx-auto px-4 py-12 md:px-6 md:py-16">
+          <Breadcrumb className="mb-8">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/">Home</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/products">Products</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{product.name}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-2 bg-accent/20 text-accent-foreground">{product.category}</Badge>
+            <h1 className="font-headline text-4xl md:text-5xl font-bold">{product.name}</h1>
+            <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">{product.description}</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {product.details.map((fittingName, index) => (
+              <Card key={index} className="group overflow-hidden text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <CardContent className="p-0">
+                  <div className="relative aspect-square w-full bg-secondary/30">
+                    <Image
+                      src={`https://placehold.co/400x400.png`}
+                      alt={fittingName}
+                      fill
+                      className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                      data-ai-hint="copper fitting"
+                    />
+                  </div>
+                  <div className="p-4 border-t">
+                    <h3 className="font-semibold">{fittingName}</h3>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <Card className="bg-secondary/50 mt-16">
+                <CardHeader>
+                    <CardTitle className="font-headline text-2xl text-center">Inquire About Our Fittings</CardTitle>
+                </CardHeader>
+              <CardContent>
+                  <p className="text-center text-muted-foreground mb-6">Have a question about our range of copper fittings, custom orders, or bulk pricing? Get in touch!</p>
+                  <ProductInquiryForm productName={product.name} />
+              </CardContent>
+            </Card>
+          </div>
+
+        </div>
+      </div>
+    );
   }
 
   return (
