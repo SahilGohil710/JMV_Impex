@@ -6,7 +6,7 @@ import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'CopperCraft Showcase',
+  title: 'JMV Impex',
   description: 'Exquisite copper items by JMV Impex',
 };
 

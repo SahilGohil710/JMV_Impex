@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2">
               <UtensilsCrossed className="h-8 w-8 text-primary" />
-              <span className="font-headline text-2xl font-bold">CopperCraft Showcase</span>
+              <span className="font-headline text-2xl font-bold">JMV Impex</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Discover the timeless elegance of handcrafted copperware by JMV Impex.

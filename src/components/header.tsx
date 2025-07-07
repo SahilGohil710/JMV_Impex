@@ -7,7 +7,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <UtensilsCrossed className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl font-bold text-foreground">CopperCraft Showcase</span>
+          <span className="font-headline text-xl font-bold text-foreground">JMV Impex</span>
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium">
           <Link href="/#catalog" className="text-muted-foreground transition-colors hover:text-foreground">
