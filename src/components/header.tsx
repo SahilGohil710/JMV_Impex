@@ -14,7 +14,7 @@ export function Header() {
           <Link href="/products" className="text-muted-foreground transition-colors hover:text-foreground">
             Products
           </Link>
-          <Link href="/#contact" className="text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="/contact" className="text-muted-foreground transition-colors hover:text-foreground">
             Contact
           </Link>
         </nav>
