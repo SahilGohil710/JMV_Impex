@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Navigation } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,6 +10,10 @@ export default function ContactPage() {
   const whatsappNumber = "919869561920";
   const whatsappLink = `https://wa.me/${whatsappNumber}`;
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(whatsappLink)}&size=200x200&bgcolor=f8fafc`;
+
+  const address = "Shop No. 17, Gr. Floor, Old Hira Building, Vitthalbhai Patel Road, Parsiwada 1st Lane, C. P. Tank, Mumbai - 400004.";
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
 
   return (
     <div className="bg-secondary/50">
@@ -64,7 +68,13 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-foreground">Our Address</h3>
-                    <span>Shop No. 17, Gr. Floor, Old Hira Building, Vitthalbhai Patel Road, Parsiwada 1st Lane, C. P. Tank, Mumbai - 400004.</span>
+                    <p>{address}</p>
+                    <Button variant="link" asChild className="p-0 h-auto font-normal mt-2">
+                        <Link href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                            <Navigation className="mr-2 h-4 w-4" />
+                            Get Directions
+                        </Link>
+                    </Button>
                   </div>
                 </li>
               </ul>
