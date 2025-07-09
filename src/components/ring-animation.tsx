@@ -83,14 +83,7 @@ export function RingAnimation() {
 
   return (
     <div ref={sectionRef} className="relative h-[300vh] w-full bg-black">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
-        <Image
-          src="https://placehold.co/1920x1080.png"
-          alt="Dark textured background"
-          fill
-          className="object-cover opacity-30"
-          data-ai-hint="dark industrial texture"
-        />
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden space-background">
         
         <div className="absolute inset-0 z-10">
           <ParticleAnimation opacity={animationValues.particleOpacity} />
