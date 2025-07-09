@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
+import { AnimatedAdvantageCard } from '@/components/animated-advantage-card';
 
 export default function Home() {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
@@ -254,24 +255,12 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {advantages.map((advantage, index) => (
-                <div key={index} className="[perspective:1000px] group h-64">
-                <div className="relative h-full w-full rounded-lg shadow-xl [transform-style:preserve-3d] transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
-                    {/* Front of card */}
-                    <div className="absolute inset-0 [backface-visibility:hidden]">
-                        <div className="h-full w-full bg-card rounded-lg p-6 flex flex-col items-center justify-center text-center border">
-                            <advantage.icon className="h-12 w-12 text-primary mb-4" />
-                            <h3 className="font-headline text-xl font-semibold text-foreground">{advantage.title}</h3>
-                        </div>
-                    </div>
-                    {/* Back of card */}
-                    <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                        <div className="h-full w-full bg-card rounded-lg p-6 flex flex-col justify-center text-center border">
-                            <h3 className="font-headline text-lg font-semibold text-foreground mb-2">{advantage.title}</h3>
-                            <p className="text-muted-foreground text-sm">{advantage.description}</p>
-                        </div>
-                    </div>
-                </div>
-                </div>
+                <AnimatedAdvantageCard
+                    key={index}
+                    icon={advantage.icon}
+                    title={advantage.title}
+                    description={advantage.description}
+                />
             ))}
             </div>
         </div>
