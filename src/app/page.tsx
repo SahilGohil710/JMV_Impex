@@ -127,6 +127,8 @@ export default function Home() {
           src="/images/HomePage/HomePage.png"
           alt="Copper background"
           fill
+          priority
+          sizes="100vw"
           className="object-cover"
           data-ai-hint="copper texture"
         />
@@ -151,8 +153,8 @@ export default function Home() {
       </section>
       
       {/* Timeless Craftsmanship Section - DESKTOP */}
-      <section ref={sectionRef} id="craftsmanship" className="hidden md:block relative bg-background h-[300vh]">
-        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden py-16 lg:py-24">
+      <section ref={sectionRef} id="craftsmanship" className="hidden md:block relative bg-background h-[300vh] py-16 lg:py-24">
+        <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div>
@@ -184,6 +186,7 @@ export default function Home() {
                                 src={item.image}
                                 alt={item.title}
                                 fill
+                                sizes="(min-width: 768px) 50vw, 100vw"
                                 className={cn(
                                     "object-cover transition-opacity duration-1000 ease-in-out absolute inset-0",
                                     activeContentIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
@@ -219,6 +222,7 @@ export default function Home() {
                                         src={item.image}
                                         alt={item.title}
                                         fill
+                                        sizes="100vw"
                                         className="object-cover"
                                         data-ai-hint={item.hint}
                                     />
