@@ -1,5 +1,5 @@
 
-import { Gem, Hammer, Sparkles } from 'lucide-react';
+import { Gem, Hammer, Sparkles, HeartPulse, Crown, Recycle, Palette } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
@@ -67,6 +67,48 @@ export default function AboutPage() {
             </div>
         </section>
 
+        <section id="why-copper" className="py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="text-center mb-12">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">
+                        Why Choose Copper?
+                    </h2>
+                    <p className="mt-2 max-w-2xl mx-auto text-muted-foreground">
+                        Discover the unique advantages that make copper a superior choice for your home and health.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
+                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
+                            <HeartPulse className="h-8 w-8" />
+                        </div>
+                        <h3 className="font-headline text-xl font-semibold">Health & Hygiene</h3>
+                        <p className="text-muted-foreground">Copper is naturally antimicrobial, helping to keep your environment clean and safe by eliminating harmful bacteria.</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
+                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
+                            <Crown className="h-8 w-8" />
+                        </div>
+                        <h3 className="font-headline text-xl font-semibold">Unmatched Durability</h3>
+                        <p className="text-muted-foreground">Known for its strength and corrosion resistance, copper products are an investment that lasts for generations.</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
+                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
+                            <Recycle className="h-8 w-8" />
+                        </div>
+                        <h3 className="font-headline text-xl font-semibold">Eco-Friendly Choice</h3>
+                        <p className="text-muted-foreground">Copper is one of the most recycled materials on earth, making it a sustainable choice for a greener planet.</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
+                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
+                            <Palette className="h-8 w-8" />
+                        </div>
+                        <h3 className="font-headline text-xl font-semibold">Timeless Beauty</h3>
+                        <p className="text-muted-foreground">With its warm, radiant hue that develops a unique patina over time, copper adds elegance to any setting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
       </div>
     </div>
   );
