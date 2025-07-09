@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 export function RingAnimation() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [animationValues, setAnimationValues] = useState({
-    ringScale: 0.1,
+    ringScale: 0.05,
     ringOpacity: 0,
     textOpacity: 0,
     textScale: 0.8,
@@ -24,11 +24,11 @@ export function RingAnimation() {
 
       // If we are not in the animation viewport, reset to initial or final state
       if (top > 0) {
-        setAnimationValues({ ringScale: 0.1, ringOpacity: 0, textOpacity: 0, textScale: 0.8 });
+        setAnimationValues({ ringScale: 0.05, ringOpacity: 0, textOpacity: 0, textScale: 0.8 });
         return;
       }
       if (top < -scrollableHeight) {
-        setAnimationValues({ ringScale: 0.1, ringOpacity: 0, textOpacity: 1, textScale: 1 });
+        setAnimationValues({ ringScale: 0.05, ringOpacity: 0, textOpacity: 1, textScale: 1 });
         return;
       }
 
@@ -46,8 +46,8 @@ export function RingAnimation() {
 
       const progressInCurrentCycle = (progress % progressPerCycle) / progressPerCycle;
 
-      // Ring scales from 0.1 to 50 and fades out
-      const ringScale = 0.1 + progressInCurrentCycle * 50;
+      // Ring scales from 0.05 to 100 and fades out
+      const ringScale = 0.05 + progressInCurrentCycle * 100;
       const ringOpacity = 1 - progressInCurrentCycle;
 
       // Text fades in during the last part of the animation
