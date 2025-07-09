@@ -82,25 +82,36 @@ export function RingAnimation() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative h-[300vh] w-full bg-background">
+    <div ref={sectionRef} className="relative h-[300vh] w-full bg-black">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
-        <ParticleAnimation opacity={animationValues.particleOpacity} />
+        <Image
+          src="https://placehold.co/1920x1080.png"
+          alt="Dark textured background"
+          fill
+          className="object-cover opacity-30"
+          data-ai-hint="dark industrial texture"
+        />
+        
+        <div className="absolute inset-0 z-10">
+          <ParticleAnimation opacity={animationValues.particleOpacity} />
+        </div>
         
         <h2
-          className="font-headline text-5xl md:text-7xl font-bold text-foreground text-center z-10"
+          className="font-headline text-5xl md:text-7xl font-bold text-white text-center z-20"
           style={{ 
             opacity: animationValues.textOpacity,
             transform: `scale(${animationValues.textScale})`,
             transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
+            textShadow: '0 2px 10px rgba(0,0,0,0.5)',
           }}
         >
           JMV Impex
           <br/>
-          <span className="text-2xl md:text-3xl text-muted-foreground font-normal">Crafted for Generations</span>
+          <span className="text-2xl md:text-3xl text-slate-300 font-normal">Crafted for Generations</span>
         </h2>
         
         <div
-          className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+          className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none"
           style={{
              opacity: animationValues.ringOpacity,
              willChange: 'transform, opacity',
