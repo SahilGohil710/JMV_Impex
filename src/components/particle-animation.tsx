@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react';
 
 interface ParticleAnimationProps {
   count?: number;
-  opacity?: number;
 }
 
-export function ParticleAnimation({ count = 50, opacity = 0 }: ParticleAnimationProps) {
+export function ParticleAnimation({ count = 50 }: ParticleAnimationProps) {
   const [particles, setParticles] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
@@ -46,7 +45,6 @@ export function ParticleAnimation({ count = 50, opacity = 0 }: ParticleAnimation
   return (
     <div
       className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
-      style={{ opacity, willChange: 'opacity' }}
     >
       {particles}
     </div>
