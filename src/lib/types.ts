@@ -9,6 +9,18 @@ export interface SpecChart {
   rows: SpecChartRow[];
 }
 
+export interface StraightPipeSpecRow {
+  nominal_size: string;
+  od_in: string;
+  wall_thickness_mm: string;
+  temper: string;
+}
+
+export interface StraightPipeSpecChart {
+  headers: string[];
+  rows: StraightPipeSpecRow[];
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -19,4 +31,5 @@ export interface Product {
   material: string;
   dimensions: string;
   specChart?: SpecChart;
+  straightPipeSpecChart?: StraightPipeSpecChart;
 }

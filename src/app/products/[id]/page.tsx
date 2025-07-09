@@ -9,14 +9,20 @@ import Link from 'next/link';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
+interface ProductPageProps {
+  params: {
+    id: string;
+  };
+}
+
 export async function generateStaticParams() {
   return products.map((product) => ({
     id: product.id,
   }));
 }
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
-  const { id } = await params;
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = params;
   const product = products.find((p) => p.id === id);
 
   if (!product) {
@@ -176,6 +182,35 @@ export default async function ProductPage({ params }: { params: { id: string } }
                             {value && <Check className="h-5 w-5 mx-auto text-accent" />}
                           </TableCell>
                         ))}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </Card>
+          </div>
+        )}
+
+        {product.straightPipeSpecChart && (
+          <div className="mt-16">
+            <h3 className="font-headline text-3xl font-bold mb-6 text-center">Specification Chart</h3>
+            <Card className="overflow-hidden border">
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-muted/50 hover:bg-muted/50">
+                      {product.straightPipeSpecChart.headers.map((header) => (
+                        <TableHead key={header} className="text-center font-semibold whitespace-nowrap">{header}</TableHead>
+                      ))}
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {product.straightPipeSpecChart.rows.map((row, rowIndex) => (
+                      <TableRow key={rowIndex}>
+                        <TableCell className="text-center font-medium whitespace-nowrap">{row.nominal_size}</TableCell>
+                        <TableCell className="text-center whitespace-nowrap">{row.od_in}</TableCell>
+                        <TableCell className="text-center whitespace-nowrap">{row.wall_thickness_mm}</TableCell>
+                        <TableCell className="text-center whitespace-nowrap">{row.temper}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

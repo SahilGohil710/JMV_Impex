@@ -45,6 +45,17 @@ export const products: Product[] = [
     image: '/images/Products/Copper_Straight_Tube_2.png',
     material: 'DHP-Cu (deoxidized, high phosphorus copper)',
     dimensions: '3.0-6.0m (9.84-19.68 ft) lengths',
+    straightPipeSpecChart: {
+      headers: ['Nominal Size (inch)', 'Outer Diameter (inch)', 'Wall Thickness (mm)', 'Temper'],
+      rows: [
+        { nominal_size: '1/4"', od_in: '0.375', wall_thickness_mm: '0.762', temper: 'Hard-Drawn' },
+        { nominal_size: '3/8"', od_in: '0.500', wall_thickness_mm: '0.813', temper: 'Hard-Drawn' },
+        { nominal_size: '1/2"', od_in: '0.625', wall_thickness_mm: '0.889', temper: 'Hard-Drawn' },
+        { nominal_size: '5/8"', od_in: '0.750', wall_thickness_mm: '0.914', temper: 'Hard-Drawn' },
+        { nominal_size: '3/4"', od_in: '0.875', wall_thickness_mm: '1.067', temper: 'Hard-Drawn' },
+        { nominal_size: '1"', od_in: '1.125', wall_thickness_mm: '1.270', temper: 'Hard-Drawn' },
+      ],
+    },
   },
   {
     id: '3',
