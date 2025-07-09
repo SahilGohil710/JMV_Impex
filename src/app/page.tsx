@@ -128,7 +128,6 @@ export default function Home() {
           alt="Copper background"
           fill
           priority
-          sizes="100vw"
           className="object-cover"
           data-ai-hint="copper texture"
         />
