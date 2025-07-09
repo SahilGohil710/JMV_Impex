@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -43,7 +42,7 @@ export function RingAnimation() {
         // Reset state when out of view
         if (top > 0) {
           ringContainer.style.opacity = '0';
-          ringInner.style.transform = 'translateZ(-1000px)';
+          ringInner.style.transform = 'scale(0.1) translateZ(0)';
           text.style.opacity = '0';
           text.style.transform = 'scale(0.8)';
           particles.style.opacity = '0';
@@ -68,15 +67,16 @@ export function RingAnimation() {
         } else {
             const progressInCurrentCycle = (progress % progressPerCycle) / progressPerCycle;
 
-            // Animate Z-translation from far to near for a smooth "fly-through"
-            // Start far away (-1000px), move past the camera (to 200px)
-            const zTranslation = -1000 + progressInCurrentCycle * 1200;
-            ringInner.style.transform = `translateZ(${zTranslation}px)`;
+            // Animate scale from small to large for a smooth "fly-through"
+            // Start small (0.1) and scale up to 8x size.
+            // Using translateZ(0) to force GPU acceleration for smoother animation.
+            const scale = 0.1 + progressInCurrentCycle * 7.9;
+            ringInner.style.transform = `scale(${scale}) translateZ(0)`;
 
             // Control opacity for a fade-in/fade-out effect per cycle
             let ringOpacity = 0;
             const appearEnd = 0.15; // Takes 15% of the cycle to fully appear
-            const fadeStart = 0.5;  // Starts fading at 50% of the cycle
+            const fadeStart = 0.7;  // Starts fading at 70% of the cycle
 
             if (progressInCurrentCycle < appearEnd) {
               // Fade in
@@ -116,7 +116,7 @@ export function RingAnimation() {
 
   return (
     <div ref={sectionRef} className="relative h-[300vh] w-full bg-black">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden [transform-style:preserve-3d] [perspective:400px]">
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         
         <Image
           src="/images/HomePage/BG_Copper_Ring.png"
