@@ -24,6 +24,13 @@ export function RingAnimation() {
 
     if (!section || !ringContainer || !ringInner || !text || !particles) return;
 
+    // Hint to the browser to optimize these properties for animation
+    ringInner.style.willChange = 'transform';
+    ringContainer.style.willChange = 'opacity';
+    particles.style.willChange = 'opacity';
+    text.style.willChange = 'opacity, transform';
+
+
     const handleScroll = () => {
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
@@ -33,18 +40,19 @@ export function RingAnimation() {
         const { top, height } = section.getBoundingClientRect();
         const scrollableHeight = height - window.innerHeight;
 
+        // Reset state when out of view
         if (top > 0) {
           ringContainer.style.opacity = '0';
-          ringInner.style.transform = 'scale(0.1) translateZ(0px)';
+          ringInner.style.transform = 'translateZ(-1000px)';
           text.style.opacity = '0';
-          text.style.transform = 'scale(0.8) translateZ(0px)';
+          text.style.transform = 'scale(0.8)';
           particles.style.opacity = '0';
           return;
         }
         if (top < -scrollableHeight) {
           ringContainer.style.opacity = '0';
           text.style.opacity = '1';
-          text.style.transform = 'scale(1) translateZ(0px)';
+          text.style.transform = 'scale(1)';
           particles.style.opacity = '0';
           return;
         }
@@ -59,36 +67,40 @@ export function RingAnimation() {
             particles.style.opacity = '0';
         } else {
             const progressInCurrentCycle = (progress % progressPerCycle) / progressPerCycle;
-            
-            // Reduced scale factor for better performance
-            const ringScale = 0.1 + progressInCurrentCycle * 8;
-            
+
+            // Animate Z-translation from far to near for a smooth "fly-through"
+            // Start far away (-1000px), move past the camera (to 200px)
+            const zTranslation = -1000 + progressInCurrentCycle * 1200;
+            ringInner.style.transform = `translateZ(${zTranslation}px)`;
+
+            // Control opacity for a fade-in/fade-out effect per cycle
             let ringOpacity = 0;
-            // Ring stays opaque for longer to enhance the "tunnel" effect
-            const appearEnd = 0.05;
-            const fadeStart = 0.6; 
-            
+            const appearEnd = 0.15; // Takes 15% of the cycle to fully appear
+            const fadeStart = 0.5;  // Starts fading at 50% of the cycle
+
             if (progressInCurrentCycle < appearEnd) {
+              // Fade in
               ringOpacity = progressInCurrentCycle / appearEnd;
-            } else if (progressInCurrentCycle >= appearEnd && progressInCurrentCycle < fadeStart) {
+            } else if (progressInCurrentCycle < fadeStart) {
+              // Hold at full opacity
               ringOpacity = 1;
             } else {
+              // Fade out
               ringOpacity = 1 - (progressInCurrentCycle - fadeStart) / (1 - fadeStart);
             }
-            ringOpacity = Math.max(0, ringOpacity);
 
-            ringContainer.style.opacity = `${ringOpacity}`;
-            ringInner.style.transform = `scale(${ringScale}) translateZ(0px)`;
-            particles.style.opacity = `${ringOpacity}`;
+            ringContainer.style.opacity = `${Math.max(0, ringOpacity)}`;
+            particles.style.opacity = `${Math.max(0, ringOpacity)}`;
         }
         
-        const textFadeStart = 0.85;
+        // Handle text fade-in at the very end of the whole animation
+        const textFadeStart = 0.9;
         const textProgress = (progress - textFadeStart) / (1 - textFadeStart);
         const textOpacity = Math.min(1, Math.max(0, textProgress));
         const textScale = 0.8 + Math.min(0.2, Math.max(0, textProgress * 0.2));
 
         text.style.opacity = `${textOpacity}`;
-        text.style.transform = `scale(${textScale}) translateZ(0px)`;
+        text.style.transform = `scale(${textScale})`;
       });
     };
 
@@ -104,7 +116,7 @@ export function RingAnimation() {
 
   return (
     <div ref={sectionRef} className="relative h-[300vh] w-full bg-black">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden [transform-style:preserve-3d] [perspective:400px]">
         
         <Image
           src="/images/HomePage/BG_Copper_Ring.png"
@@ -114,7 +126,7 @@ export function RingAnimation() {
           data-ai-hint="copper texture"
         />
 
-        <div ref={particleContainerRef} className="absolute inset-0 z-10 pointer-events-none" style={{ willChange: 'opacity' }}>
+        <div ref={particleContainerRef} className="absolute inset-0 z-10 pointer-events-none">
           <ParticleAnimation />
         </div>
         
@@ -123,10 +135,8 @@ export function RingAnimation() {
           className="font-headline text-5xl md:text-7xl font-bold text-white text-center z-20"
           style={{ 
             opacity: 0,
-            transform: 'scale(0.8) translateZ(0px)',
-            transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
+            transform: 'scale(0.8)',
             textShadow: '0 2px 10px rgba(0,0,0,0.5)',
-            willChange: 'opacity, transform'
           }}
         >
           JMV Impex
@@ -139,15 +149,14 @@ export function RingAnimation() {
           className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none"
           style={{
              opacity: 0,
-             willChange: 'opacity',
           }}
         >
-          <div ref={ringInnerRef} style={{ willChange: 'transform', transform: 'scale(0.1) translateZ(0px)' }}>
+          <div ref={ringInnerRef}>
             <Image
                 src="/images/HomePage/Copper_Ring.png"
                 alt="Copper Ring Animation"
-                width={250}
-                height={250}
+                width={500}
+                height={500}
                 priority
                 data-ai-hint="copper ring"
             />
