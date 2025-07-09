@@ -8,17 +8,20 @@ import { ArrowRight } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, priority = false }: ProductCardProps) {
   return (
     <Card className="w-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col md:flex-row group">
       <div className="md:w-2/5 relative min-h-[250px] md:min-h-0 overflow-hidden">
-        <Link href={`/products/${product.id}`} className="block h-full">
+        <Link href={`/products/${product.id}`} className="block h-full relative">
           <Image
             src={product.image}
             alt={product.name}
             fill
+            priority={priority}
+            sizes="(min-width: 768px) 40vw, 100vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             data-ai-hint="copper item"
           />

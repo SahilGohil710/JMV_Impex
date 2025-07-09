@@ -81,8 +81,8 @@ export function ProductCatalog({ products }: ProductCatalogProps) {
         <div 
           className="grid grid-cols-1 gap-8"
         >
-          {filteredAndSortedProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
+          {filteredAndSortedProducts.map((product, index) => (
+            <ProductCard key={product.id} product={product} priority={index === 0} />
           ))}
         </div>
       ) : (
