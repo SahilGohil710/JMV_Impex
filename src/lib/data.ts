@@ -16,6 +16,19 @@ export const products: Product[] = [
     image: '/images/Products/Copper_Pancake_Coil.png',
     material: 'DHP-Cu (deoxidized, high phosphorus copper)',
     dimensions: 'Customizable',
+    specChart: {
+      headers: ['0.30', '0.35', '0.41', '0.45', '0.46', '0.51', '0.56', '0.61', '0.66', '0.71', '0.76', '0.81', '0.91', '1.00', '1.20', '1.50'],
+      rows: [
+        { od_mm: '4.76', od_in: '3/16"', values: [false, false, true, true, true, true, true, true, true, true, true, true, false, false, false, false] },
+        { od_mm: '6.35', od_in: '1/4"', values: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false] },
+        { od_mm: '7.94', od_in: '5/16"', values: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false] },
+        { od_mm: '9.52', od_in: '3/8"', values: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false] },
+        { od_mm: '12.70', od_in: '1/2"', values: [false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, false] },
+        { od_mm: '15.88', od_in: '5/8"', values: [false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, false] },
+        { od_mm: '19.05', od_in: '3/4"', values: [false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true] },
+        { od_mm: '22.22', od_in: '7/8"', values: [false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true] },
+      ],
+    },
   },
   {
     id: '2',
