@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export function RingAnimation() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -86,23 +87,23 @@ export function RingAnimation() {
           <span className="text-2xl md:text-3xl text-muted-foreground font-normal">Crafted for Generations</span>
         </h2>
         
-        {/* The Ring */}
+        {/* The Ring Image */}
         <div
-          className="absolute inset-0 flex items-center justify-center z-20"
+          className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
           style={{
              opacity: animationValues.ringOpacity,
           }}
         >
-          <div
-            className="rounded-full border-[10px] md:border-[20px]"
-            style={{
-              width: '100px', // Initial width
-              height: '100px', // Initial height
-              borderColor: 'hsl(var(--primary))',
-              transform: `scale(${animationValues.ringScale})`,
-              boxShadow: '0 0 30px hsl(var(--primary) / 0.7)',
-            }}
-          />
+          <div style={{ transform: `scale(${animationValues.ringScale})` }}>
+            <Image
+                src="/images/HomePage/Copper_Ring.png"
+                alt="Copper Ring Animation"
+                width={100}
+                height={100}
+                priority
+                data-ai-hint="copper ring"
+            />
+          </div>
         </div>
       </div>
     </div>
