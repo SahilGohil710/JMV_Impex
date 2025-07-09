@@ -14,12 +14,9 @@ export async function generateStaticParams() {
   }));
 }
 
-interface ProductPageProps {
-  params: { id: string };
-}
-
-export default async function ProductPage({ params }: ProductPageProps) {
-  const product = products.find((p) => p.id === params.id);
+export default async function ProductPage({ params }: { params: { id: string } }) {
+  const { id } = await params;
+  const product = products.find((p) => p.id === id);
 
   if (!product) {
     notFound();
