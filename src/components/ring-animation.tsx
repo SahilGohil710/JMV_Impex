@@ -35,16 +35,16 @@ export function RingAnimation() {
 
         if (top > 0) {
           ringContainer.style.opacity = '0';
-          ringInner.style.transform = 'scale(0.1)';
+          ringInner.style.transform = 'scale(0.1) translateZ(0px)';
           text.style.opacity = '0';
-          text.style.transform = 'scale(0.8)';
+          text.style.transform = 'scale(0.8) translateZ(0px)';
           particles.style.opacity = '0';
           return;
         }
         if (top < -scrollableHeight) {
           ringContainer.style.opacity = '0';
           text.style.opacity = '1';
-          text.style.transform = 'scale(1)';
+          text.style.transform = 'scale(1) translateZ(0px)';
           particles.style.opacity = '0';
           return;
         }
@@ -59,12 +59,14 @@ export function RingAnimation() {
             particles.style.opacity = '0';
         } else {
             const progressInCurrentCycle = (progress % progressPerCycle) / progressPerCycle;
-
-            const ringScale = 0.1 + progressInCurrentCycle * 20;
+            
+            // Reduced scale factor for better performance
+            const ringScale = 0.1 + progressInCurrentCycle * 8;
             
             let ringOpacity = 0;
+            // Ring stays opaque for longer to enhance the "tunnel" effect
             const appearEnd = 0.05;
-            const fadeStart = 0.35; 
+            const fadeStart = 0.6; 
             
             if (progressInCurrentCycle < appearEnd) {
               ringOpacity = progressInCurrentCycle / appearEnd;
@@ -76,7 +78,7 @@ export function RingAnimation() {
             ringOpacity = Math.max(0, ringOpacity);
 
             ringContainer.style.opacity = `${ringOpacity}`;
-            ringInner.style.transform = `scale(${ringScale})`;
+            ringInner.style.transform = `scale(${ringScale}) translateZ(0px)`;
             particles.style.opacity = `${ringOpacity}`;
         }
         
@@ -86,7 +88,7 @@ export function RingAnimation() {
         const textScale = 0.8 + Math.min(0.2, Math.max(0, textProgress * 0.2));
 
         text.style.opacity = `${textOpacity}`;
-        text.style.transform = `scale(${textScale})`;
+        text.style.transform = `scale(${textScale}) translateZ(0px)`;
       });
     };
 
@@ -121,7 +123,7 @@ export function RingAnimation() {
           className="font-headline text-5xl md:text-7xl font-bold text-white text-center z-20"
           style={{ 
             opacity: 0,
-            transform: 'scale(0.8)',
+            transform: 'scale(0.8) translateZ(0px)',
             transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
             textShadow: '0 2px 10px rgba(0,0,0,0.5)',
             willChange: 'opacity, transform'
@@ -140,7 +142,7 @@ export function RingAnimation() {
              willChange: 'opacity',
           }}
         >
-          <div ref={ringInnerRef} style={{ willChange: 'transform', transform: 'scale(0.1)' }}>
+          <div ref={ringInnerRef} style={{ willChange: 'transform', transform: 'scale(0.1) translateZ(0px)' }}>
             <Image
                 src="/images/HomePage/Copper_Ring.png"
                 alt="Copper Ring Animation"
