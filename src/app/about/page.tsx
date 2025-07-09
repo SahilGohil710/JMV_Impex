@@ -1,10 +1,77 @@
+'use client';
 
 import { Gem, Hammer, Sparkles, HeartPulse, Crown, Recycle, Palette } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { useState, useRef, useEffect } from 'react';
 
 export default function AboutPage() {
+    const horizontalScrollRef = useRef<HTMLDivElement>(null);
+    const cardsContainerRef = useRef<HTMLDivElement>(null);
+    const [translateX, setTranslateX] = useState(0);
+
+    const copperAdvantages = [
+        {
+            icon: HeartPulse,
+            title: "Health & Hygiene",
+            description: "Copper is naturally antimicrobial, helping to keep your environment clean and safe by eliminating harmful bacteria."
+        },
+        {
+            icon: Crown,
+            title: "Unmatched Durability",
+            description: "Known for its strength and corrosion resistance, copper products are an investment that lasts for generations."
+        },
+        {
+            icon: Recycle,
+            title: "Eco-Friendly Choice",
+            description: "Copper is one of the most recycled materials on earth, making it a sustainable choice for a greener planet."
+        },
+        {
+            icon: Palette,
+            title: "Timeless Beauty",
+            description: "With its warm, radiant hue that develops a unique patina over time, copper adds elegance to any setting."
+        }
+    ];
+
+    useEffect(() => {
+        const horizontalSection = horizontalScrollRef.current;
+        const cardsContainer = cardsContainerRef.current;
+        
+        const handleScroll = () => {
+            if (!horizontalSection || !cardsContainer) return;
+    
+            const { top, height } = horizontalSection.getBoundingClientRect();
+            // The total vertical distance we can scroll through for this effect
+            const scrollableHeight = height - window.innerHeight;
+    
+            // If we are scrolled above the section, do nothing.
+            if (top > 0) {
+                setTranslateX(0);
+                return;
+            }
+            
+            // If we have scrolled past the section.
+            if (top < -scrollableHeight) {
+                const maxScrollLeft = cardsContainer.scrollWidth - window.innerWidth;
+                setTranslateX(-maxScrollLeft);
+                return;
+            }
+    
+            // Calculate scroll progress within the section (0 to 1)
+            const scrollProgress = -top / scrollableHeight;
+            
+            // Calculate the total horizontal distance the cards can scroll
+            const maxScrollLeft = cardsContainer.scrollWidth - window.innerWidth;
+    
+            setTranslateX(-scrollProgress * maxScrollLeft);
+        };
+    
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
   return (
     <div className="bg-background">
       <div className="container mx-auto px-4 py-12 md:px-6 md:py-16">
@@ -77,34 +144,35 @@ export default function AboutPage() {
                         Discover the unique advantages that make copper a superior choice for your home and health.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
-                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
-                            <HeartPulse className="h-8 w-8" />
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold">Health & Hygiene</h3>
-                        <p className="text-muted-foreground">Copper is naturally antimicrobial, helping to keep your environment clean and safe by eliminating harmful bacteria.</p>
-                    </div>
-                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
-                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
-                            <Crown className="h-8 w-8" />
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold">Unmatched Durability</h3>
-                        <p className="text-muted-foreground">Known for its strength and corrosion resistance, copper products are an investment that lasts for generations.</p>
-                    </div>
-                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
-                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
-                            <Recycle className="h-8 w-8" />
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold">Eco-Friendly Choice</h3>
-                        <p className="text-muted-foreground">Copper is one of the most recycled materials on earth, making it a sustainable choice for a greener planet.</p>
-                    </div>
-                    <div className="flex flex-col items-center text-center p-6 gap-4 border rounded-lg bg-card shadow-sm">
-                        <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
-                            <Palette className="h-8 w-8" />
-                        </div>
-                        <h3 className="font-headline text-xl font-semibold">Timeless Beauty</h3>
-                        <p className="text-muted-foreground">With its warm, radiant hue that develops a unique patina over time, copper adds elegance to any setting.</p>
+            </div>
+
+            <div ref={horizontalScrollRef} className="relative h-[300vh] w-full mt-12">
+                <div className="sticky top-0 flex h-screen items-center overflow-x-hidden">
+                    <div
+                        ref={cardsContainerRef}
+                        className="flex items-center gap-8"
+                        style={{ transform: `translateX(${translateX}px)` }}
+                    >
+                        {/* Start padding to center the first card */}
+                        <div className="w-[calc((100vw-70vw)/2)] md:w-[calc((100vw-45vw)/2)] lg:w-[calc((100vw-30vw)/2)] flex-shrink-0" />
+
+                        {copperAdvantages.map((advantage, index) => {
+                            const Icon = advantage.icon;
+                            return (
+                                <div key={index} className="w-[70vw] md:w-[45vw] lg:w-[30vw] flex-shrink-0">
+                                    <div className="flex flex-col items-center text-center p-8 gap-6 border rounded-xl bg-card shadow-xl h-[450px] justify-center transition-transform hover:-translate-y-2">
+                                        <div className="flex items-center justify-center h-20 w-20 rounded-full bg-accent/10 text-accent mb-4">
+                                            <Icon className="h-10 w-10" />
+                                        </div>
+                                        <h3 className="font-headline text-2xl font-semibold">{advantage.title}</h3>
+                                        <p className="text-muted-foreground text-base">{advantage.description}</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                        
+                        {/* End padding to center the last card */}
+                        <div className="w-[calc((100vw-70vw)/2)] md:w-[calc((100vw-45vw)/2)] lg:w-[calc((100vw-30vw)/2)] flex-shrink-0" />
                     </div>
                 </div>
             </div>
