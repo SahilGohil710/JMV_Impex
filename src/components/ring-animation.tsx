@@ -102,8 +102,16 @@ export function RingAnimation() {
 
   return (
     <div ref={sectionRef} className="relative h-[300vh] w-full bg-black">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden space-background">
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         
+        <Image
+          src="/images/HomePage/BG_Copper_Ring.png"
+          alt="Abstract copper texture background"
+          fill
+          className="object-cover z-0"
+          data-ai-hint="copper texture"
+        />
+
         <div ref={particleContainerRef} className="absolute inset-0 z-10 pointer-events-none" style={{ willChange: 'opacity' }}>
           <ParticleAnimation />
         </div>
@@ -136,8 +144,8 @@ export function RingAnimation() {
             <Image
                 src="/images/HomePage/Copper_Ring.png"
                 alt="Copper Ring Animation"
-                width={100}
-                height={100}
+                width={250}
+                height={250}
                 priority
                 data-ai-hint="copper ring"
             />
