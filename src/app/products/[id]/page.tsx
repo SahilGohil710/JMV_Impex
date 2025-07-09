@@ -1,4 +1,3 @@
-
 import { products } from '@/lib/data';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -15,7 +14,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+interface ProductPageProps {
+  params: { id: string };
+}
+
+export default async function ProductPage({ params }: ProductPageProps) {
   const product = products.find((p) => p.id === params.id);
 
   if (!product) {
