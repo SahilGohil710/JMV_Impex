@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductPage({ params }: { params: { id:string } }) {
+export default async function ProductPage({ params }: { params: { id:string } }) {
   const product = products.find((p) => p.id === params.id);
 
   if (!product) {
@@ -54,7 +54,7 @@ export default function ProductPage({ params }: { params: { id:string } }) {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {product.details.map((fitting, index) => (
+            {(product.details as { name: string; image: string }[]).map((fitting, index) => (
               <Card key={index} className="group overflow-hidden text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <CardContent className="p-0">
                   <div className="relative aspect-square w-full bg-secondary/30">
