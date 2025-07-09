@@ -20,6 +20,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedAdvantageCard } from '@/components/animated-advantage-card';
+import { RingAnimation } from '@/components/ring-animation';
 
 export default function Home() {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
@@ -152,6 +153,8 @@ export default function Home() {
         </div>
       </section>
       
+      <RingAnimation />
+
       {/* Timeless Craftsmanship Section - DESKTOP */}
       <section ref={sectionRef} id="craftsmanship" className="hidden md:block relative bg-background h-[300vh] py-16 lg:py-24">
         <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
@@ -270,3 +273,4 @@ export default function Home() {
   );
 
     
+
