@@ -1,3 +1,4 @@
+
 'use client'
 
 import Link from 'next/link';
@@ -35,11 +36,15 @@ export function Header() {
                                 key={link.href}
                                 href={link.href}
                                 className={cn(
-                                    'transition-colors hover:text-foreground',
-                                    pathname === link.href ? 'text-foreground font-semibold' : 'text-muted-foreground'
+                                    'group relative transition-colors',
+                                    pathname === link.href ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground'
                                 )}
                             >
                                 {link.label}
+                                <span className={cn(
+                                    'absolute bottom-[-2px] left-0 h-[2px] bg-primary transition-all duration-300',
+                                    pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                                )}></span>
                             </Link>
                         ))}
                     </nav>
