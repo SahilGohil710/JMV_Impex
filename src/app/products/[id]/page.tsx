@@ -4,11 +4,12 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Package, Ruler, Check } from 'lucide-react';
+import { CheckCircle, Package, Ruler } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import type { HardPipeSpecChart } from '@/lib/types';
 
 interface ProductPageProps {
   params: {
@@ -21,6 +22,39 @@ export async function generateStaticParams() {
     id: product.id,
   }));
 }
+
+const HardPipeSpecTable = ({ chart }: { chart: HardPipeSpecChart }) => (
+    <div className="mt-16">
+        <h3 className="font-headline text-3xl font-bold mb-6 text-center">{chart.title}</h3>
+        <Card className="overflow-hidden border">
+            <div className="overflow-x-auto">
+                <Table>
+                    <TableHeader>
+                        <TableRow className="bg-muted/50 hover:bg-muted/50">
+                            {chart.headers.map((header) => (
+                                <TableHead key={header} className="text-center font-semibold whitespace-nowrap">{header}</TableHead>
+                            ))}
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {chart.rows.map((row, rowIndex) => (
+                            <TableRow key={rowIndex}>
+                                <TableCell className="text-center font-medium whitespace-nowrap">{row.inch}</TableCell>
+                                <TableCell className="text-center whitespace-nowrap">{row.mm}</TableCell>
+                                {row.values.map((value, valueIndex) => (
+                                    <TableCell key={valueIndex} className="text-center whitespace-nowrap">
+                                        {value}
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+        </Card>
+    </div>
+);
+
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
@@ -151,46 +185,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
 
-        {product.specChart && (
-          <div className="mt-16">
-            <h3 className="font-headline text-3xl font-bold mb-6 text-center">Specification Chart</h3>
-            <Card className="overflow-hidden border">
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow className="bg-primary/20 hover:bg-primary/20">
-                      <TableHead colSpan={2} className="p-4 text-center font-bold text-primary-foreground whitespace-nowrap align-middle bg-primary">Outer Diameter</TableHead>
-                      <TableHead colSpan={product.specChart.headers.length} className="p-4 text-center font-bold text-primary-foreground whitespace-nowrap align-middle bg-primary">
-                        PCC - 50FT - 100FT PANCAKE COILS
-                        <span className="block font-normal">Wall Thickness (MM)</span>
-                      </TableHead>
-                    </TableRow>
-                    <TableRow className="bg-muted/50 hover:bg-muted/50">
-                      <TableHead className="text-center font-semibold whitespace-nowrap">MM</TableHead>
-                      <TableHead className="text-center font-semibold whitespace-nowrap">INCH</TableHead>
-                      {product.specChart.headers.map((header) => (
-                        <TableHead key={header} className="text-center font-semibold whitespace-nowrap">{header}</TableHead>
-                      ))}
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {product.specChart.rows.map((row, rowIndex) => (
-                      <TableRow key={rowIndex}>
-                        <TableCell className="text-center font-medium whitespace-nowrap">{row.od_mm}</TableCell>
-                        <TableCell className="text-center font-medium whitespace-nowrap">{row.od_in}</TableCell>
-                        {row.values.map((value, valueIndex) => (
-                          <TableCell key={valueIndex} className="text-center whitespace-nowrap">
-                            {value && <Check className="h-5 w-5 mx-auto text-accent" />}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </Card>
-          </div>
-        )}
+        {product.hardPipeWeightMeter && <HardPipeSpecTable chart={product.hardPipeWeightMeter} />}
+        {product.hardPipeWeightFeet && <HardPipeSpecTable chart={product.hardPipeWeightFeet} />}
 
         {product.straightPipeSpecChart && (
           <div className="mt-16">

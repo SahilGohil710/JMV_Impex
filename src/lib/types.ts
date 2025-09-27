@@ -35,6 +35,18 @@ export interface SoftTubeSpecChart {
   rows: SoftTubeSpecRow[];
 }
 
+export interface HardPipeSpecRow {
+  inch: string;
+  mm: string;
+  values: string[];
+}
+
+export interface HardPipeSpecChart {
+    title: string;
+    headers: string[];
+    rows: HardPipeSpecRow[];
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -47,4 +59,6 @@ export interface Product {
   specChart?: SpecChart;
   straightPipeSpecChart?: StraightPipeSpecChart;
   softTubeSpecChart?: SoftTubeSpecChart;
+  hardPipeWeightMeter?: HardPipeSpecChart;
+  hardPipeWeightFeet?: HardPipeSpecChart;
 }

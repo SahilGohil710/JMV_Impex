@@ -1,4 +1,4 @@
-import type { Product, SoftTubeSpecChart, StraightPipeSpecChart } from './types';
+import type { Product, SoftTubeSpecChart, HardPipeSpecChart } from './types';
 
 export const softTubeSpecChartData: SoftTubeSpecChart = {
   title: 'SOFT COPPER TUBES SIZE CHART',
@@ -11,6 +11,50 @@ export const softTubeSpecChartData: SoftTubeSpecChart = {
     { od_mm: '19.05', od_in: '3/4', wall_mm: '1', wall_in: '0.040', length_m: '15' },
     { od_mm: '22.23', od_in: '7/8', wall_mm: '1.2', wall_in: '0.047', length_m: '15' },
   ]
+};
+
+const hardPipeWeightMeter: HardPipeSpecChart = {
+    title: 'WEIGHT OF COPPER HARD PIPE IN METER',
+    headers: ['Inch', 'MM', '16SWG (1.6MM)', '18SWG (1.2MM)', '19SWG (1.02MM)', '20SWG (0.9MM)', '21SWG (0.8MM)'],
+    rows: [
+        { inch: '1/4', mm: '6.35', values: ['0.214', '0.175', '0.151', '0.139', '0.126'] },
+        { inch: '5/16', mm: '7.94', values: ['0.286', '0.229', '0.198', '0.182', '0.166'] },
+        { inch: '3/8', mm: '9.52', values: ['0.358', '0.283', '0.241', '0.22', '0.198'] },
+        { inch: '1/2', mm: '12.7', values: ['0.501', '0.391', '0.332', '0.302', '0.272'] },
+        { inch: '5/8', mm: '15.88', values: ['0.648', '0.499', '0.421', '0.382', '0.342'] },
+        { inch: '3/4', mm: '19.05', values: ['0.79', '0.607', '0.507', '0.46', '0.415'] },
+        { inch: '7/8', mm: '22.23', values: ['0.935', '0.715', '0.601', '0.544', '0.486'] },
+        { inch: '1', mm: '25.4', values: ['1.079', '0.823', '0.689', '0.624', '0.56'] },
+        { inch: '1 1/8', mm: '28.58', values: ['1.223', '0.931', '0.781', '0.706', '0.63'] },
+        { inch: '1 1/4', mm: '31.75', values: ['1.367', '1.039', '0.871', '0.785', '-'] },
+        { inch: '1 3/8', mm: '34.93', values: ['1.511', '1.147', '0.961', '0.869', '-'] },
+        { inch: '1 1/2', mm: '38.1', values: ['1.655', '1.255', '1.051', '0.95', '-'] },
+        { inch: '1 5/8', mm: '41.28', values: ['1.799', '1.363', '1.142', '1.03', '-'] },
+        { inch: '1 3/4', mm: '44.45', values: ['1.943', '1.471', '1.232', '1.11', '-'] },
+        { inch: '2 1/8', mm: '53.98', values: ['2.375', '1.795', '1.502', '1.354', '-'] }
+    ]
+};
+
+const hardPipeWeightFeet: HardPipeSpecChart = {
+    title: 'WEIGHT OF COPPER HARD PIPE IN FEET',
+    headers: ['Inch', 'MM', '16SWG (1.6MM)', '18SWG (1.2MM)', '19SWG (1.02MM)', '20SWG (0.9MM)', '21SWG (0.8MM)'],
+    rows: [
+        { inch: '1/4', mm: '6.35', values: ['0.065', '0.053', '0.046', '0.042', '0.038'] },
+        { inch: '5/16', mm: '7.94', values: ['0.087', '0.07', '0.06', '0.055', '0.049'] },
+        { inch: '3/8', mm: '9.52', values: ['0.109', '0.086', '0.073', '0.067', '0.06'] },
+        { inch: '1/2', mm: '12.7', values: ['0.153', '0.119', '0.101', '0.092', '0.083'] },
+        { inch: '5/8', mm: '15.88', values: ['0.198', '0.152', '0.128', '0.116', '0.104'] },
+        { inch: '3/4', mm: '19.05', values: ['0.241', '0.185', '0.154', '0.14', '0.126'] },
+        { inch: '7/8', mm: '22.23', values: ['0.285', '0.218', '0.183', '0.166', '0.148'] },
+        { inch: '1', mm: '25.4', values: ['0.329', '0.251', '0.211', '0.19', '0.171'] },
+        { inch: '1 1/8', mm: '28.58', values: ['0.373', '0.284', '0.238', '0.215', '0.192'] },
+        { inch: '1 1/4', mm: '31.75', values: ['0.417', '0.317', '0.266', '0.239', '-'] },
+        { inch: '1 3/8', mm: '34.93', values: ['0.461', '0.35', '0.293', '0.263', '-'] },
+        { inch: '1 1/2', mm: '38.1', values: ['0.505', '0.383', '0.32', '0.288', '-'] },
+        { inch: '1 5/8', mm: '41.28', values: ['0.548', '0.416', '0.348', '0.312', '-'] },
+        { inch: '1 3/4', mm: '44.45', values: ['0.592', '0.448', '0.375', '0.336', '-'] },
+        { inch: '2 1/8', mm: '53.98', values: ['0.724', '0.547', '0.458', '0.413', '-'] }
+    ]
 };
 
 
@@ -30,19 +74,8 @@ export const products: Product[] = [
     image: '/images/Products/Copper_Pancake_Coil.png',
     material: 'DHP-Cu (deoxidized, high phosphorus copper)',
     dimensions: 'Customizable',
-    specChart: {
-      headers: ['0.30', '0.35', '0.41', '0.45', '0.46', '0.51', '0.56', '0.61', '0.66', '0.71', '0.76', '0.81', '0.91', '1.00', '1.20', '1.50'],
-      rows: [
-        { od_mm: '4.76', od_in: '3/16"', values: [false, false, true, true, true, true, true, true, true, true, true, true, false, false, false, false] },
-        { od_mm: '6.35', od_in: '1/4"', values: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false] },
-        { od_mm: '7.94', od_in: '5/16"', values: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false] },
-        { od_mm: '9.52', od_in: '3/8"', values: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false] },
-        { od_mm: '12.70', od_in: '1/2"', values: [false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, false] },
-        { od_mm: '15.88', od_in: '5/8"', values: [false, false, false, false, true, true, true, true, true, true, true, true, true, true, true, false] },
-        { od_mm: '19.05', od_in: '3/4"', values: [false, false, false, false, false, false, false, false, false, true, true, true, true, true, true, true] },
-        { od_mm: '22.22', od_in: '7/8"', values: [false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, true] },
-      ],
-    },
+    hardPipeWeightMeter: hardPipeWeightMeter,
+    hardPipeWeightFeet: hardPipeWeightFeet,
   },
   {
     id: '2',
