@@ -16,10 +16,13 @@ import {
   TrendingUp,
   Globe2,
   Shapes,
+  Mail,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedAdvantageCard } from '@/components/animated-advantage-card';
+import { products } from '@/lib/data';
+import { FeaturedProductCard } from '@/components/featured-product-card';
 
 export default function Home() {
   const [activeContentIndex, setActiveContentIndex] = useState(0);
@@ -241,6 +244,30 @@ export default function Home() {
             </div>
         </div>
     </section>
+
+      {/* Featured Products Section */}
+      <section id="featured-products" className="py-16 lg:py-24 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">
+              Featured Products
+            </h2>
+            <p className="mt-2 max-w-3xl mx-auto text-muted-foreground">
+              A glimpse into our world of premium copper craftsmanship.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <FeaturedProductCard key={product.id} product={product} />
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline">
+              <Link href="/products">View All Products <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
+          </div>
+        </div>
+      </section>
       
       {/* Advantage Section */}
        <section id="advantages" className="py-16 lg:py-24 bg-secondary/50">
@@ -266,10 +293,26 @@ export default function Home() {
         </div>
       </section>
 
+       {/* Call to Action Section */}
+      <section id="cta" className="py-16 lg:py-24 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold">
+            Have a Project in Mind?
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-primary-foreground/90">
+            Whether you have a question about our products, a custom requirement, or need a quote, our team is ready to assist you.
+          </p>
+          <div className="mt-8">
+            <Button asChild size="lg" variant="secondary">
+              <Link href="/contact">
+                <Mail className="mr-2 h-5 w-5" />
+                Get in Touch
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
-
-    
-
-
 }
