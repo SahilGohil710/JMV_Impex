@@ -21,6 +21,20 @@ export interface StraightPipeSpecChart {
   rows: StraightPipeSpecRow[];
 }
 
+export interface SoftTubeSpecRow {
+  od_mm: string;
+  od_in: string;
+  wall_mm: string;
+  wall_in: string;
+  length_m: string;
+}
+
+export interface SoftTubeSpecChart {
+  title: string;
+  headers: string[];
+  rows: SoftTubeSpecRow[];
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -32,4 +46,5 @@ export interface Product {
   dimensions: string;
   specChart?: SpecChart;
   straightPipeSpecChart?: StraightPipeSpecChart;
+  softTubeSpecChart?: SoftTubeSpecChart;
 }

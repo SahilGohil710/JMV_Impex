@@ -1,4 +1,18 @@
-import type { Product } from './types';
+import type { Product, SoftTubeSpecChart, StraightPipeSpecChart } from './types';
+
+export const softTubeSpecChartData: SoftTubeSpecChart = {
+  title: 'SOFT COPPER TUBES SIZE CHART',
+  headers: ['Outside Diameter (mm)', 'Outside Diameter (inch)', 'Wall Thickness (mm)', 'Wall Thickness (inch)', 'Length (Meter)'],
+  rows: [
+    { od_mm: '6.35', od_in: '1/4', wall_mm: '0.8', wall_in: '0.032', length_m: '15' },
+    { od_mm: '9.52', od_in: '3/8', wall_mm: '0.8', wall_in: '0.032', length_m: '15' },
+    { od_mm: '12.7', od_in: '1/2', wall_mm: '0.9', wall_in: '0.035', length_m: '15' },
+    { od_mm: '15.88', od_in: '5/8', wall_mm: '1', wall_in: '0.040', length_m: '15' },
+    { od_mm: '19.05', od_in: '3/4', wall_mm: '1', wall_in: '0.040', length_m: '15' },
+    { od_mm: '22.23', od_in: '7/8', wall_mm: '1.2', wall_in: '0.047', length_m: '15' },
+  ]
+};
+
 
 export const products: Product[] = [
   {
@@ -45,17 +59,7 @@ export const products: Product[] = [
     image: '/images/Products/Copper_Straight_Tube_2.png',
     material: 'DHP-Cu (deoxidized, high phosphorus copper)',
     dimensions: '3.0-6.0m (9.84-19.68 ft) lengths',
-    straightPipeSpecChart: {
-      headers: ['Nominal Size (inch)', 'Outer Diameter (inch)', 'Wall Thickness (mm)', 'Temper'],
-      rows: [
-        { nominal_size: '1/4"', od_in: '0.375', wall_thickness_mm: '0.762', temper: 'Hard-Drawn' },
-        { nominal_size: '3/8"', od_in: '0.500', wall_thickness_mm: '0.813', temper: 'Hard-Drawn' },
-        { nominal_size: '1/2"', od_in: '0.625', wall_thickness_mm: '0.889', temper: 'Hard-Drawn' },
-        { nominal_size: '5/8"', od_in: '0.750', wall_thickness_mm: '0.914', temper: 'Hard-Drawn' },
-        { nominal_size: '3/4"', od_in: '0.875', wall_thickness_mm: '1.067', temper: 'Hard-Drawn' },
-        { nominal_size: '1"', od_in: '1.125', wall_thickness_mm: '1.270', temper: 'Hard-Drawn' },
-      ],
-    },
+    softTubeSpecChart: softTubeSpecChartData,
   },
   {
     id: '3',

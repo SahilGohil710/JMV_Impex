@@ -221,6 +221,35 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         )}
 
+        {product.softTubeSpecChart && (
+          <div className="mt-16">
+            <h3 className="font-headline text-3xl font-bold mb-6 text-center">{product.softTubeSpecChart.title}</h3>
+            <Card className="overflow-hidden border">
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-muted/50 hover:bg-muted/50">
+                      {product.softTubeSpecChart.headers.map((header) => (
+                        <TableHead key={header} className="text-center font-semibold whitespace-nowrap">{header}</TableHead>
+                      ))}
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {product.softTubeSpecChart.rows.map((row, rowIndex) => (
+                      <TableRow key={rowIndex}>
+                        <TableCell className="text-center font-medium whitespace-nowrap">{row.od_mm}</TableCell>
+                        <TableCell className="text-center whitespace-nowrap">{row.od_in}</TableCell>
+                        <TableCell className="text-center whitespace-nowrap">{row.wall_mm}</TableCell>
+                        <TableCell className="text-center whitespace-nowrap">{row.wall_in}</TableCell>
+                        <TableCell className="text-center whitespace-nowrap">{row.length_m}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </Card>
+          </div>
+        )}
       </div>
     </div>
   );
